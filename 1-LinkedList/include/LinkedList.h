@@ -1,6 +1,8 @@
 #ifndef LINKED_LIST_SPECIFICATION
 #define LINKED_LIST_SPECIFICATION
 
+#include <stdbool.h>
+
 /**
  * @brief Basic structure to use insie linked list
  * 
@@ -81,5 +83,13 @@ void delete_node(Linked_List *l, int node_value);
  * @return int Number to identify total of Nodes inside linked list
  */
 int get_total_nodes(const struct linked_list * l);
+
+/**
+ * @brief Desaloc all Nodes and of the linked list
+ * 
+ * @param l The address of linked list
+ * @param desaloc_list Identification to validade if is necessary to free intire linked list address 
+ */
+void destroy(Linked_List **l, bool desaloc_list);
 
 #endif

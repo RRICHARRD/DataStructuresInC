@@ -8,6 +8,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 #include <LinkedList.h>
 
@@ -179,6 +180,29 @@ int get_total_nodes(const struct linked_list * l){
     }
 
     return ++quantity; //plus one for the last node that -> to null
+}
+
+/**
+ * @brief Desaloc all Nodes and of the linked list
+ * 
+ * @param l The address of linked list
+ * @param desaloc_list Identification to validade if is necessary to free intire linked list address 
+ */
+void destroy(Linked_List **l, bool desaloc_list) {
+     //**l is the same address of (*l)->head
+    //(**l).head != NULL works too O_o
+
+    //free always the first Node of linked list in sequence =)
+    while((*l)->head != NULL){
+        Node *current_head_node = (*l)->head;
+        (*l)->head = (*l)->head->next_node_address;
+        free(current_head_node);
+    }
+
+    if(desaloc_list == true) {
+        free(*l);
+        *l = NULL;
+    }
 }
 
 #endif

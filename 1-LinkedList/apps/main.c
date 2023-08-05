@@ -31,5 +31,14 @@ int main(){
     int total_nodes = get_total_nodes(linked_list);
     printf("The linked list has %d nodes\n", total_nodes);
 
+    printf("Destroing linked list values\n");
+    destroy(&linked_list, false);
+    //destroy(&linked_list, true); destroy to intire list of the memory
+    
+    printf("linked list reference is %p\n", linked_list);
+
+    //show(linked_list); segmentation fault if destroyed the intire linked list before
+    show(linked_list);
+
     return EXIT_SUCCESS;
 }
