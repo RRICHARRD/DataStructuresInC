@@ -68,7 +68,25 @@ void insert_last(DoublyLinkedList *l, int number){
     DoublyNode *node_reader = l->head;
     while (node_reader->next_doubly_node_address != NULL)
         node_reader = node_reader->next_doubly_node_address;
-    node_reader->next_doubly_node_address = (DoublyNode *) create_doubly_node(number);
+    
+    DoublyNode *new_doubly_node = (DoublyNode *) create_doubly_node(number);
+    node_reader->next_doubly_node_address = new_doubly_node;
+    new_doubly_node->preview_doubly_node_address = node_reader;
+}
+
+/**
+ * @brief Insert another node in the head
+ * 
+ * @param l Doubly linked list
+ * @param number A value to store inside the new Doubly node of the structure
+ */
+void insert_head(DoublyLinkedList *l, int number){
+    DoublyNode *new_doubly_node = (DoublyNode *) create_doubly_node(number);
+    
+    new_doubly_node->next_doubly_node_address = l->head;
+    l->head->preview_doubly_node_address = new_doubly_node;
+
+    l->head = new_doubly_node;
 }
 
 /**
@@ -77,7 +95,7 @@ void insert_last(DoublyLinkedList *l, int number){
  * @param l Doubly linked list with values
  */
 void show_from_head(DoublyLinkedList *l){
-    if(l->head == NULL) return;
+    if (l->head == NULL) return;
 
     DoublyNode *node_reader = l->head;
     while (node_reader->next_doubly_node_address != NULL){
@@ -85,6 +103,27 @@ void show_from_head(DoublyLinkedList *l){
         node_reader = node_reader->next_doubly_node_address;
     }
     printf("value: %d address %p\n", node_reader->node_value, node_reader);
+}
+
+/**
+ * @brief Show nodes of doubly linked list from tail to head if exists
+ * 
+ * @param l Doubly linked list structure
+ */
+void show_from_tail(DoublyLinkedList *l){
+    if(l->head == NULL) return;
+
+    DoublyNode *node_reader = l->head;
+
+    while (node_reader->next_doubly_node_address != NULL)
+        node_reader = node_reader->next_doubly_node_address;
+
+    while (node_reader->preview_doubly_node_address != NULL){
+        printf("value: %d address %p\n", node_reader->node_value, node_reader);
+        node_reader = node_reader->preview_doubly_node_address;
+    }
+    printf("value: %d address %p\n", node_reader->node_value, node_reader);
+
 }
 
 #endif

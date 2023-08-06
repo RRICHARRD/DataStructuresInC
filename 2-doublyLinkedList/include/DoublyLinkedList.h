@@ -45,10 +45,25 @@ DoublyLinkedList *create_doubly_linked_list();
 void insert_last(DoublyLinkedList *l, int number);
 
 /**
+ * @brief Insert another node in the head
+ * 
+ * @param l Doubly linked list
+ * @param number A value to store inside the new Doubly node of the structure
+ */
+void insert_head(DoublyLinkedList *l, int number);
+
+/**
  * @brief Show nodes from the head to tail if exists
  * 
  * @param l Doubly linked list with values
  */
 void show_from_head(DoublyLinkedList *l);
+
+/**
+ * @brief Show nodes of doubly linked list from tail to head if exists
+ * 
+ * @param l Doubly linked list structure
+ */
+void show_from_tail(DoublyLinkedList *l);
 
 #endif
