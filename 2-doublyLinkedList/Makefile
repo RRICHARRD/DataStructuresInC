@@ -1,6 +1,7 @@
 #This file was created to help compiling and run source code more easilly
 
 program_name = main.exe
+datastructure_name = DoublyLinkedList
 
 #Default output for typing '$ make' in the terminal
 All:
@@ -13,8 +14,8 @@ All:
 #Only compile the code
 compile c:
 	@echo "# Compiling $(program_name), please wait..."
-	@gcc -c ./src/LinkedList.c -I ./include -o ./obj/LinkedList.o
-	@gcc -O1 -O2 -O3 -Wall ./apps/main.c ./obj/LinkedList.o -I ./include -o ./bin/main.exe
+	@gcc -c ./src/$(datastructure_name).c -I ./include -o ./obj/$(datastructure_name).o
+	@gcc -O1 -O2 -O3 -Wall ./apps/main.c ./obj/$(datastructure_name).o -I ./include -o ./bin/main.exe
 	@echo "# Successfully compiled!!!"
 	@echo "# Type '$$ make run' to execute the program"
 

@@ -1,0 +1,8 @@
+#ifndef DOUBLY_LINKEDLIST_IMPLEMENTATION
+#define DOUBLY_LINKEDLIST_IMPLEMENTATION
+
+#include <DoublyLinkedList.h>
+
+
+
+#endif
