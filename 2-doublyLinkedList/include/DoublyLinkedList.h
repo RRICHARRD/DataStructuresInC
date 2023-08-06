@@ -50,7 +50,7 @@ void insert_last(DoublyLinkedList *l, int number);
  * @param l Doubly linked list
  * @param number A value to store inside the new Doubly node of the structure
  */
-void insert_head(DoublyLinkedList *l, int number);
+void insert_head(DoublyLinkedList *l, int number); 
 
 /**
  * @brief Show nodes from the head to tail if exists
