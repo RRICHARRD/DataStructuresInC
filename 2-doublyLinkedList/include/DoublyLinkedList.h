@@ -1,6 +1,8 @@
 #ifndef DOUBLY_LINKEDLIST_SPECIFICATION
 #define DOUBLY_LINKEDLIST_SPECIFICATION
 
+#include <stdbool.h>
+
 /**
  * @brief Node structure to use inside DoubleLinkedList
  * 
@@ -73,5 +75,13 @@ void show_from_tail(DoublyLinkedList *l);
  * @param node_value A value to delete from doubly list if exists
  */
 void delete_node(DoublyLinkedList *l, int node_value);
+
+/**
+ * @brief Destroy all nodes of Doubly linked list
+ * 
+ * @param l Doubly linked list
+ * @param intire_list Identification to destroy intire list of the memory
+ */
+void destroy(DoublyLinkedList **l, bool intire_list);
 
 #endif

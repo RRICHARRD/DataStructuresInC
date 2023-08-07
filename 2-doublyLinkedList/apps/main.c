@@ -44,5 +44,9 @@ int main(){
     delete_node(doubly_linked_list, 11);
     show_from_head(doubly_linked_list);
 
+    sprint("destroying doubly linked list nodes");
+    destroy(&doubly_linked_list, false);
+    show_from_tail(doubly_linked_list);
+
     return EXIT_SUCCESS;
 }

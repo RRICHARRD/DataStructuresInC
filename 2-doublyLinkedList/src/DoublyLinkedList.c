@@ -171,10 +171,10 @@ void delete_node(DoublyLinkedList *l, int node_value){
  */
 void destroy(DoublyLinkedList **l, bool intire_list){
 
-    //if not free(), all the values was in stored in the memory forever =(
     while ((*l)->head != NULL){
-        printf("current node to destroy has value %d", (*l)->head->node_value);
+        DoublyNode *current_double_node_to_destroy = (*l)->head;
         (*l)->head = (*l)->head->next_doubly_node_address;
+        free(current_double_node_to_destroy);
     }
 
     //destroy doubly linked list reference
