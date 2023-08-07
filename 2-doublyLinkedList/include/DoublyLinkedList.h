@@ -66,4 +66,12 @@ void show_from_head(DoublyLinkedList *l);
  */
 void show_from_tail(DoublyLinkedList *l);
 
+/**
+ * @brief Delete node from doubly linked list if exists
+ * 
+ * @param l Doubly linked list address
+ * @param node_value A value to delete from doubly list if exists
+ */
+void delete_node(DoublyLinkedList *l, int node_value);
+
 #endif

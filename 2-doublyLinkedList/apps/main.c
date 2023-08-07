@@ -40,6 +40,9 @@ int main(){
     sprint("after insert head tail");
     show_from_tail(doubly_linked_list);
 
+    sprint("deleting value 11");
+    delete_node(doubly_linked_list, 11);
+    show_from_head(doubly_linked_list);
 
     return EXIT_SUCCESS;
 }

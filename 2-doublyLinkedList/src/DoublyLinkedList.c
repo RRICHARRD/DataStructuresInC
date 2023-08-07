@@ -1,8 +1,9 @@
 #ifndef DOUBLY_LINKEDLIST_IMPLEMENTATION
 #define DOUBLY_LINKEDLIST_IMPLEMENTATION
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 #include <DoublyLinkedList.h>
 
@@ -28,7 +29,7 @@ typedef struct doubly_node {
  * @return Doubly_node* 
  */
 DoublyNode *create_doubly_node(int number) {
-    DoublyNode *new_doubly_node = (DoublyNode *) calloc(1, sizeof(DoublyNode)); //next and preview address is NULL
+    DoublyNode *new_doubly_node = (DoublyNode *) calloc(1, sizeof(DoublyNode)); //next and preview addresses is NULL
     new_doubly_node->node_value = number;
     return new_doubly_node;
 }
@@ -124,6 +125,63 @@ void show_from_tail(DoublyLinkedList *l){
     }
     printf("value: %d address %p\n", node_reader->node_value, node_reader);
 
+}
+
+/**
+ * @brief Delete node from doubly linked list if provided value exists in the chain
+ * 
+ * @param l Doubly linked list address
+ * @param node_value A value to delete from doubly list if exists
+ */
+void delete_node(DoublyLinkedList *l, int node_value){
+    //head node validation
+    if (l->head->node_value == node_value){
+        DoublyNode *current_head_node = l->head;
+        l->head = l->head->next_doubly_node_address;
+        l->head->preview_doubly_node_address = NULL;
+        free(current_head_node);
+    }
+
+    //middle nodes validation
+    DoublyNode *node_reader = l->head;
+    while (node_reader->next_doubly_node_address != NULL){
+        if (node_reader->node_value == node_value){
+            DoublyNode *current_node = node_reader;
+            node_reader->next_doubly_node_address->preview_doubly_node_address = node_reader->preview_doubly_node_address;
+            node_reader->preview_doubly_node_address->next_doubly_node_address = node_reader->next_doubly_node_address;
+            free(current_node);
+            return;
+        }
+        node_reader = node_reader->next_doubly_node_address;
+    }
+
+    //Last node validation
+    if (node_reader->node_value == node_value){
+        DoublyNode *current_node = node_reader;
+        node_reader->preview_doubly_node_address->next_doubly_node_address = NULL;
+        free(current_node);
+    }
+}
+
+/**
+ * @brief Destroy all nodes of Doubly linked list
+ * 
+ * @param l Doubly linked list
+ * @param intire_list Identification to destroy intire list of the memory
+ */
+void destroy(DoublyLinkedList **l, bool intire_list){
+
+    //if not free(), all the values was in stored in the memory forever =(
+    while ((*l)->head != NULL){
+        printf("current node to destroy has value %d", (*l)->head->node_value);
+        (*l)->head = (*l)->head->next_doubly_node_address;
+    }
+
+    //destroy doubly linked list reference
+    if (intire_list == true){
+        free(*l);
+        *l = NULL;
+    }
 }
 
 #endif
