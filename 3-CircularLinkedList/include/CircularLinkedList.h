@@ -6,10 +6,10 @@
 /**
  * @brief Circular node structure
  * 
- * @attention Use Circular Node to refers to struct circularNode
+ * @attention Use CircularNode to refers to struct circularNode
  * 
  * @param value {int} A value to store inside the node
- * @param circularNode {struct circularNode *} Node in the last position
+ * @param next_circular_node {struct circularNode *} Node in the last position
  */
 typedef struct circularNode CircularNode;
 
@@ -44,5 +44,13 @@ void insert_new_node(CircularLinkedList *cl, int value);
  * @param repeat_infinitely A boolean to activate infinite Circular linked list transversal
  */
 void show(CircularLinkedList *cl, bool repeat_infinitely);
+
+/**
+ * @brief Delete a node from Circular Linked List
+ * 
+ * @param cl A circular linked list
+ * @param number A value inside a node to be deleted
+ */
+void delete_node(CircularLinkedList *cl, int number);
 
 #endif

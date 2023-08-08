@@ -12,7 +12,7 @@
  * @attention Use Circular Node to refers to struct circularNode
  * 
  * @param value {int} A value to store inside the node
- * @param circularNode {struct circularNode *} Node in the last position
+ * @param next_circular_node {struct circularNode *} Node in the last position
  */
 typedef struct circularNode{
     int value;
@@ -90,6 +90,29 @@ void show(CircularLinkedList *cl, bool repeat_infinitely){
         node_reader = node_reader->next_circular_node;
     }
     printf("address: %p value: %d\n", node_reader, node_reader->value);
+}
+
+/**
+ * @brief Delete a node from Circular Linked List
+ * 
+ * @param cl A circular linked list
+ * @param number A value inside a node to be deleted
+ */
+void delete_node(CircularLinkedList *cl, int number){
+    if (cl->last_node == NULL) return;
+
+    if(cl->last_node->value == number){ //test when i have only one node in last position
+        CircularNode *current_last_node = cl->last_node;
+        cl->last_node = cl->last_node->next_circular_node;
+
+        CircularNode *node_reader = cl->last_node;
+        while (node_reader->next_circular_node != current_last_node)
+            node_reader = node_reader->next_circular_node;
+
+        node_reader->next_circular_node = cl->last_node;
+        free(current_last_node);
+    }
+    
 }
 
 #endif

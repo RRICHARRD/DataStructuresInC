@@ -19,7 +19,14 @@ int main(){
     insert_new_node(circular_linked_list, 8);
     insert_new_node(circular_linked_list, 9);
 
-    show(circular_linked_list, true);
+    show(circular_linked_list, false);
+    
+    puts("### Deleting last node...");
+    delete_node(circular_linked_list, 0);
+    delete_node(circular_linked_list, 1);
+    delete_node(circular_linked_list, 9);
+
+    show(circular_linked_list, false);
 
     return EXIT_SUCCESS;
 }
