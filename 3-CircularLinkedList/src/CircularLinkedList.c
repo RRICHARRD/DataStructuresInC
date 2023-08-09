@@ -111,8 +111,17 @@ void delete_node(CircularLinkedList *cl, int number){
 
         node_reader->next_circular_node = cl->last_node;
         free(current_last_node);
+        return;
     }
+
+    CircularNode *node_reader = cl->last_node;
+    while (node_reader->next_circular_node->value != number)
+        node_reader = node_reader->next_circular_node;
     
+    CircularNode *node_to_delete = node_reader->next_circular_node;
+    node_reader->next_circular_node = node_reader->next_circular_node->next_circular_node;
+    free(node_to_delete);
+
 }
 
 #endif

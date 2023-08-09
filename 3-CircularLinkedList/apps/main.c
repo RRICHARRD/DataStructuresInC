@@ -21,10 +21,14 @@ int main(){
 
     show(circular_linked_list, false);
     
-    puts("### Deleting last node...");
+    puts("### Deleting last nodes...");
     delete_node(circular_linked_list, 0);
     delete_node(circular_linked_list, 1);
     delete_node(circular_linked_list, 9);
+
+    show(circular_linked_list, false);
+    puts("### Deleting middle node...");
+    delete_node(circular_linked_list, 5);
 
     show(circular_linked_list, false);
 
