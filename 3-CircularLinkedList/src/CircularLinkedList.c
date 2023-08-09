@@ -101,7 +101,16 @@ void show(CircularLinkedList *cl, bool repeat_infinitely){
 void delete_node(CircularLinkedList *cl, int number){
     if (cl->last_node == NULL) return;
 
-    if(cl->last_node->value == number){ //test when i have only one node in last position
+    //when circular linked list has only one node
+    if (cl->last_node->value == number && cl->last_node->next_circular_node == cl->last_node){
+        CircularNode *current_node = cl->last_node;
+        cl->last_node = NULL;
+        free(current_node);
+        return;
+    }
+
+    //when deleting first node of circular linked list with two of more values
+    if(cl->last_node->value == number){
         CircularNode *current_last_node = cl->last_node;
         cl->last_node = cl->last_node->next_circular_node;
 
@@ -114,6 +123,7 @@ void delete_node(CircularLinkedList *cl, int number){
         return;
     }
 
+    //for middle nodes
     CircularNode *node_reader = cl->last_node;
     while (node_reader->next_circular_node->value != number)
         node_reader = node_reader->next_circular_node;
