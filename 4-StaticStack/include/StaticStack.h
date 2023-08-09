@@ -1,0 +1,7 @@
+#ifndef STATIC_STACK_SPECIFICATION
+#define STATIC_STACK_SPECIFICATION
+
+
+
+
+#endif
