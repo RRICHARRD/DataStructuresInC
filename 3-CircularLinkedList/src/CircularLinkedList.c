@@ -131,7 +131,53 @@ void delete_node(CircularLinkedList *cl, int number){
     CircularNode *node_to_delete = node_reader->next_circular_node;
     node_reader->next_circular_node = node_reader->next_circular_node->next_circular_node;
     free(node_to_delete);
+}
 
+/**
+ * @brief Get the size of linked list by tranversal all the values
+ * 
+ * @param cl A circular linked list
+ * @return int A number to identify a quantity of nodes inside the linked list
+ */
+int size(CircularLinkedList *cl){
+    if (cl->last_node == NULL) return 0;
+
+    //when has only one value
+    if(cl->last_node->next_circular_node == cl->last_node) return 1;
+
+    int size = 0;
+    CircularNode *node_reader = cl->last_node;
+    while (node_reader->next_circular_node != cl->last_node){
+        size++;
+        node_reader = node_reader->next_circular_node;
+    }
+
+    return ++size;
+}
+
+/**
+ * @brief Free all nodes from memory 
+ * 
+ * @param cl A Circular linked list
+ * @param destroy_intire Identification to destroy ot not the full reference of Circular linked list from memory
+ */
+void destroy(CircularLinkedList **cl, bool destroy_entirely){
+    if ((*cl)->last_node == NULL) return;
+
+    CircularNode *last_Node = (*cl)->last_node;
+    while ((*cl)->last_node->next_circular_node != last_Node){
+        CircularNode *current_last_node = (*cl)->last_node;
+        (*cl)->last_node = (*cl)->last_node->next_circular_node;
+        free(current_last_node);
+    }
+
+    free((*cl)->last_node);
+    (*cl)->last_node = NULL;
+
+    if (destroy_entirely){
+        free(*cl);
+        *cl = NULL;
+    }
 }
 
 #endif

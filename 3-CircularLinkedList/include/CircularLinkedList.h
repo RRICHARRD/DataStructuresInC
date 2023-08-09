@@ -53,4 +53,20 @@ void show(CircularLinkedList *cl, bool repeat_infinitely);
  */
 void delete_node(CircularLinkedList *cl, int number);
 
+/**
+ * @brief Get the size of linked list by tranversal all the values
+ * 
+ * @param cl A circular linked list
+ * @return int A number to identify a quantity of nodes inside the linked list
+ */
+int size(CircularLinkedList *cl);
+
+/**
+ * @brief Free all nodes from memory 
+ * 
+ * @param cl A Circular linked list
+ * @param destroy_intire Identification to destroy ot not the full reference of Circular linked list from memory
+ */
+void destroy(CircularLinkedList **cl, bool destroy_intire);
+
 #endif

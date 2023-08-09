@@ -10,27 +10,36 @@ int main(){
 
     insert_new_node(circular_linked_list, 0);
     insert_new_node(circular_linked_list, 1);
-    // insert_new_node(circular_linked_list, 2);
-    // insert_new_node(circular_linked_list, 3);
-    // insert_new_node(circular_linked_list, 4);
-    // insert_new_node(circular_linked_list, 5);
-    // insert_new_node(circular_linked_list, 6);
-    // insert_new_node(circular_linked_list, 7);
-    // insert_new_node(circular_linked_list, 8);
-    // insert_new_node(circular_linked_list, 9);
+    insert_new_node(circular_linked_list, 2);
+    insert_new_node(circular_linked_list, 3);
+    insert_new_node(circular_linked_list, 4);
+    insert_new_node(circular_linked_list, 5);
+    insert_new_node(circular_linked_list, 6);
+    insert_new_node(circular_linked_list, 7);
+    insert_new_node(circular_linked_list, 8);
+    insert_new_node(circular_linked_list, 9);
 
     show(circular_linked_list, false);
     
     puts("### Deleting last nodes...");
     delete_node(circular_linked_list, 0);
-    // delete_node(circular_linked_list, 1);
-    // delete_node(circular_linked_list, 9);
+    delete_node(circular_linked_list, 1);
+    delete_node(circular_linked_list, 9);
 
     show(circular_linked_list, false);
-    // puts("### Deleting middle node...");
-    // delete_node(circular_linked_list, 5);
+    puts("### Deleting middle node...");
+    delete_node(circular_linked_list, 5);
 
-    // show(circular_linked_list, false);
+    show(circular_linked_list, false);
+    puts("### getting size of circular linked list");
+
+    int circular_linked_list_size = size(circular_linked_list);
+    printf("the size of circular linked list is: %d\n", circular_linked_list_size);
+
+    puts("### destroying circular linked list");
+    destroy(&circular_linked_list, false);
+
+    show(circular_linked_list, false);
 
     return EXIT_SUCCESS;
 }
