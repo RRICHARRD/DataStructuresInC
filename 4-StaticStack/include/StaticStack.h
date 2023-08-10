@@ -42,5 +42,14 @@ bool push(StaticStack *st, int value);
  */
 bool is_empty(StaticStack *st);
 
+/**
+ * @brief Get the top value of stack
+ * 
+ * @attention return -12345690 if stack is empty
+ * 
+ * @param st Static static
+ * @return long 
+ */
+long peek(StaticStack *st);
 
 #endif

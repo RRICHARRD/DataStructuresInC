@@ -40,6 +40,8 @@ StaticStack *create_static_stack(const long size){
 /**
  * @brief Insert a new number at the top of stack
  * 
+ * @attention For that example, that stack only receive positive values
+ * 
  * @param st A static stack
  * @param value A number to store inside static stack
  * @return true 
@@ -63,6 +65,21 @@ bool push(StaticStack *st, int value){
 bool is_empty(StaticStack *st){
     if (st->top == -1) return true;
     return false;
+}
+
+/**
+ * @brief Get the top value of stack
+ * 
+ * @attention return -1234567890 if stack is empty
+ * 
+ * @param st Static static
+ * @return long 
+ */
+long peek(StaticStack *st){
+    if (is_empty(st)) return -1234567890;
+    
+    int current_top_index = st->top;
+    return st->stack[current_top_index];
 }
 
 #endif
