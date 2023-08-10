@@ -19,8 +19,8 @@
  */
 typedef struct staticStack {
     int *stack;
-    long top;
     long size;
+    long current_top_index;
 } StaticStack;
 
 /**
@@ -31,7 +31,7 @@ typedef struct staticStack {
  */
 StaticStack *create_static_stack(const long size){
     StaticStack *new_static_stack = (StaticStack *) calloc(1, sizeof(StaticStack));
-    new_static_stack->top = -1;
+    new_static_stack->current_top_index = -1;
     new_static_stack->size = size;
     new_static_stack->stack = (int *) calloc(size, sizeof(int));
     return new_static_stack;
@@ -48,10 +48,11 @@ StaticStack *create_static_stack(const long size){
  * @return false 
  */
 bool push(StaticStack *st, int value){
-    if (st->top == (st->size)-1) return false; //arrays begin in zero index on pointer arithmetic, reason size-1
+    if (st->current_top_index == (st->size)-1) return false; //arrays begin in zero index on pointer arithmetic, reason size-1
 
-    int new_top_position = ++(st->top);
+    int new_top_position = ++(st->current_top_index);
     st->stack[new_top_position] = value;
+    st->current_top_index = new_top_position;
     return true;
 }
 
@@ -63,7 +64,7 @@ bool push(StaticStack *st, int value){
  * @return false
  */
 bool is_empty(StaticStack *st){
-    if (st->top == -1) return true;
+    if (st->current_top_index == -1) return true;
     return false;
 }
 
@@ -78,8 +79,24 @@ bool is_empty(StaticStack *st){
 long peek(StaticStack *st){
     if (is_empty(st)) return -1234567890;
     
-    int current_top_index = st->top;
+    int current_top_index = st->current_top_index;
     return st->stack[current_top_index];
+}
+
+/**
+ * @brief Return the top value of stack
+ * 
+ * @param st A static stack
+ * @return long 
+ */
+long pop(StaticStack *st){
+    if (is_empty(st)) return -1;
+
+    long current_top_element = st->stack[st->current_top_index];
+    st->stack[st->current_top_index] = 0; //not obligatory, just to "remove" the data from stack
+    st->current_top_index = --(st->current_top_index);
+
+    return current_top_element;
 }
 
 #endif

@@ -52,4 +52,12 @@ bool is_empty(StaticStack *st);
  */
 long peek(StaticStack *st);
 
+/**
+ * @brief Return the top value of stack
+ * 
+ * @param st A static stack
+ * @return long 
+ */
+long pop(StaticStack *st);
+
 #endif

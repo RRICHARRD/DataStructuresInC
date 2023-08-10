@@ -10,7 +10,7 @@ int main(){
     
     printf("Stack is empty: %s\n", is_empty(stack) ? "true" : "false");
 
-    push(stack, 1);
+    push(stack, 45);
     printf("Stack is empty: %s\n", is_empty(stack) ? "true" : "false");
 
     printf("Current top number is: %ld\n", peek(stack));
@@ -18,6 +18,9 @@ int main(){
     push(stack, 90);
     printf("Current top number is: %ld\n", peek(stack));
 
+    printf("Poped value: %ld\n", pop(stack));
+    printf("Poped value: %ld\n", pop(stack));
+    printf("Poped value: %ld\n", pop(stack));
 
     return EXIT_SUCCESS;
 }
