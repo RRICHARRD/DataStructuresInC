@@ -60,4 +60,12 @@ long peek(StaticStack *st);
  */
 long pop(StaticStack *st);
 
+/**
+ * @brief Get size of static statck
+ * 
+ * @param st A Static stack
+ * @return long 
+ */
+long size(StaticStack *st);
+
 #endif

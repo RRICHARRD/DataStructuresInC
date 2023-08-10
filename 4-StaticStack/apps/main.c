@@ -22,5 +22,7 @@ int main(){
     printf("Poped value: %ld\n", pop(stack));
     printf("Poped value: %ld\n", pop(stack));
 
+    printf("Size: %ld\n", size(stack));
+
     return EXIT_SUCCESS;
 }

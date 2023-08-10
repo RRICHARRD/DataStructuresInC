@@ -99,4 +99,14 @@ long pop(StaticStack *st){
     return current_top_element;
 }
 
+/**
+ * @brief Get size of static statck
+ * 
+ * @param st A Static stack
+ * @return long 
+ */
+long size(StaticStack *st){
+    return st->size;
+}
+
 #endif
