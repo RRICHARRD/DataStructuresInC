@@ -21,8 +21,20 @@ int main(){
     printf("Poped value: %ld\n", pop(stack));
     printf("Poped value: %ld\n", pop(stack));
     printf("Poped value: %ld\n", pop(stack));
+    printf("Poped value: %ld\n", pop(stack));
 
     printf("Size: %ld\n", size(stack));
+
+    show_values(stack); //correct, here stack does not have elements
+
+    
+    push(stack, 1);
+    push(stack, 2);
+    push(stack, 3);
+    push(stack, 4);
+    push(stack, 5);
+    
+    show_values(stack);
 
     return EXIT_SUCCESS;
 }

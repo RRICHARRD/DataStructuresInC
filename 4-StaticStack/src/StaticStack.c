@@ -1,6 +1,7 @@
 #ifndef STATIC_STACK_IMPLEMENTATION
 #define STATIC_STACK_IMPLEMENTATION
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include <StaticStack.h>
@@ -107,6 +108,20 @@ long pop(StaticStack *st){
  */
 long size(StaticStack *st){
     return st->size;
+}
+
+/**
+ * @brief Show all the values inside stack
+ * 
+ * @param st A static stack
+ */
+void show_values(StaticStack *st){
+    if (is_empty(st)) return;
+    
+    long current_top_index = st->current_top_index; 
+    while (current_top_index != -1)
+        printf("top index: %ld element: %ld\n", current_top_index--, st->stack[current_top_index]);
+
 }
 
 #endif

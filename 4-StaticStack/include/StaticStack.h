@@ -68,4 +68,11 @@ long pop(StaticStack *st);
  */
 long size(StaticStack *st);
 
+/**
+ * @brief Show all the values inside stack
+ * 
+ * @param st A static stack
+ */
+void show_values(StaticStack *st);
+
 #endif
