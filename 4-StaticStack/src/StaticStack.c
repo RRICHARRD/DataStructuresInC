@@ -124,4 +124,15 @@ void show_values(StaticStack *st){
 
 }
 
+/**
+ * @brief Check is static stack is full
+ * 
+ * @param st A Static stack
+ * @return true
+ * @return false 
+ */
+bool is_full(StaticStack *st){
+    return st->current_top_index == (st->size - 1);
+}
+
 #endif

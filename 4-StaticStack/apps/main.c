@@ -36,5 +36,10 @@ int main(){
     
     show_values(stack);
 
+    printf("Is full: %s\n", is_full(stack) ? "true" : "false");
+    pop(stack);
+
+    printf("Is full: %s\n", is_full(stack) ? "true" : "false");
+
     return EXIT_SUCCESS;
 }
