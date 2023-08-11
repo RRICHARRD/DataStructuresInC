@@ -135,4 +135,14 @@ bool is_full(StaticStack *st){
     return st->current_top_index == (st->size - 1);
 }
 
+/**
+ * @brief Get the current top index of static stack
+ * 
+ * @param st A static stack
+ * @return long 
+ */
+long current_top_index(StaticStack *st){
+    return st->current_top_index;
+}
+
 #endif

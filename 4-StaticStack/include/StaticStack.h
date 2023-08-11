@@ -84,4 +84,12 @@ void show_values(StaticStack *st);
  */
 bool is_full(StaticStack *st);
 
+/**
+ * @brief Get the current top index of static stack
+ * 
+ * @param st A static stack
+ * @return long 
+ */
+long current_top_index(StaticStack *st);
+
 #endif

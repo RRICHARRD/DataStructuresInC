@@ -41,5 +41,7 @@ int main(){
 
     printf("Is full: %s\n", is_full(stack) ? "true" : "false");
 
+    printf("the index of top value is: %ld\n", current_top_index(stack));
+
     return EXIT_SUCCESS;
 }
