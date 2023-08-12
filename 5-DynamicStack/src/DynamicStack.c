@@ -1,6 +1,7 @@
 #ifndef DYNAMIC_STACK_IMPLEMENTATION
 #define DYNAMIC_STACK_IMPLEMENTATION
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include <DynamicStack.h>
@@ -67,6 +68,42 @@ void push(DynamicStack *dt, int number){
     dt->top_node->upper_next_node = new_doubly_node;
     new_doubly_node->bottom_preview_node = dt->top_node;
     dt->top_node = new_doubly_node;
+}
+
+/**
+ * @brief Get the top value of dynamic stack
+ * 
+ * @param dt Dynamic stack
+ * @return int 
+ */
+int top(DynamicStack *dt){
+    return dt->top_node->value;
+}
+
+/**
+ * @brief Get the first value of dynamic stack
+ * 
+ * @param dt Dynamic stack
+ * @return int 
+ */
+int first(DynamicStack *dt){
+    return dt->first_node->value;
+}
+
+/**
+ * @brief Show all values and address of dynamics stack
+ * 
+ * @param dt A Dynamic Stack
+ * @param inverted A boolean to show normal from top to first (false) or from first to top (true)
+ */
+void show(DynamicStack *dt, bool inverted){
+    DoublyNode *node_reader = inverted ? dt->first_node : dt->top_node;
+    
+    while ((inverted ? node_reader->upper_next_node : node_reader->bottom_preview_node) != NULL){ //
+        printf("address: %p value: %d\n", node_reader, node_reader->value);
+        node_reader = inverted ? node_reader->upper_next_node : node_reader->bottom_preview_node;
+    }
+    printf("address: %p value: %d\n", node_reader, node_reader->value);
 }
 
 #endif

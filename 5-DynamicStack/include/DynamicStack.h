@@ -1,6 +1,8 @@
 #ifndef DYNAMIC_STACK_SPECIFICATION
 #define DYNAMIC_STACK_SPECIFICATION
 
+#include <stdbool.h>
+
 /**
  * @brief Structure of node with two pointer variables to use in dynamic stack 
  * 
@@ -41,5 +43,29 @@ DoublyNode *create_doubly_node(int number);
  * @param number A number to store inside the new node
  */
 void push(DynamicStack *dt, int number);
+
+/**
+ * @brief Get the top value of dynamic stack
+ * 
+ * @param dt Dynamic stack
+ * @return int 
+ */
+int top(DynamicStack *dt);
+
+/**
+ * @brief Get the first value of dynamic stack
+ * 
+ * @param dt Dynamic stack
+ * @return int 
+ */
+int first(DynamicStack *dt);
+
+/**
+ * @brief Show all values and address of dynamics stack
+ * 
+ * @param dt A Dynamic Stack
+ * @param inverted A boolean to show normal from top to first (false) or from first to top (true)
+ */
+void show(DynamicStack *dt, bool inverted);
 
 #endif
