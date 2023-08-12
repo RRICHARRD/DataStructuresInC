@@ -40,5 +40,33 @@ DynamicStack *create_dynamic_stack(){
     return (DynamicStack *) calloc(1, sizeof(DynamicStack)); //first and top nodes is NULL
 }
 
+/**
+ * @brief Create a doubly node
+ * 
+ * @param number A value to store inside the node
+ */
+DoublyNode *create_doubly_node(int number){
+    return (DoublyNode *) calloc(1, sizeof(DoublyNode));
+}
+
+/**
+ * @brief Insert a new node in the stack
+ * 
+ * @param dt Dynamic Stack 
+ * @param number A number to store inside the new node
+ */
+void push(DynamicStack *dt, int number){
+    if (dt->top_node == NULL && dt->first_node == NULL) {
+        dt->top_node = dt->first_node = (DoublyNode *) create_doubly_node(number);
+        return;
+    }
+
+    DoublyNode *new_doubly_node = (DoublyNode *) create_doubly_node(number);
+    new_doubly_node->value = number;
+
+    dt->top_node->upper_next_node = new_doubly_node;
+    new_doubly_node->bottom_preview_node = dt->top_node;
+    dt->top_node = new_doubly_node;
+}
 
 #endif

@@ -7,8 +7,8 @@ int main(){
 
     DynamicStack *stack = create_dynamic_stack();
 
-    printf("%p\n", stack);
-    printf("%p\n", &stack);
+    push(stack, 1);
+    push(stack, 2);
     
     return 0;
 }

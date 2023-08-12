@@ -27,4 +27,19 @@ typedef struct dynamicStack DynamicStack;
  */
 DynamicStack *create_dynamic_stack();
 
+/**
+ * @brief Create a doubly node
+ * 
+ * @param number A value to store inside the node
+ */
+DoublyNode *create_doubly_node(int number);
+
+/**
+ * @brief Insert a new node in the stack
+ * 
+ * @param dt Dynamic Stack 
+ * @param number A number to store inside the new node
+ */
+void push(DynamicStack *dt, int number);
+
 #endif
