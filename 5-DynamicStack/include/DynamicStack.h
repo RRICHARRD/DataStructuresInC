@@ -68,4 +68,28 @@ int first(DynamicStack *dt);
  */
 void show(DynamicStack *dt, bool inverted);
 
+/**
+ * @brief Remove to top element of dynamic stack
+ * 
+ * @param dt A dynamic stack
+ * @return int
+ */
+int pop(DynamicStack *dt);
+
+/**
+ * @brief Destroy allocated memory of nodes
+ * 
+ * @param dt Dynamic stack
+ * @param intirely Validation to destroy intirely dynamic list
+ */
+void destroy(DynamicStack **dt, bool intirely);
+
+/**
+ * @brief Get quantity of nodes inside Dynamic stack
+ * 
+ * @param st Dynamic stack
+ * @return int
+ */
+unsigned long quantity(DynamicStack *dt);
+
 #endif

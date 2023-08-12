@@ -58,7 +58,10 @@ DoublyNode *create_doubly_node(int number){
  */
 void push(DynamicStack *dt, int number){
     if (dt->top_node == NULL && dt->first_node == NULL) {
-        dt->top_node = dt->first_node = (DoublyNode *) create_doubly_node(number);
+        DoublyNode *new_doubly_Node = (DoublyNode *) create_doubly_node(number);
+        new_doubly_Node->value = number;
+        dt->top_node = new_doubly_Node;
+        dt->first_node = new_doubly_Node;
         return;
     }
 
@@ -77,7 +80,7 @@ void push(DynamicStack *dt, int number){
  * @return int 
  */
 int top(DynamicStack *dt){
-    return dt->top_node->value;
+    return dt->top_node != NULL ? dt->top_node->value : -321;
 }
 
 /**
@@ -87,7 +90,7 @@ int top(DynamicStack *dt){
  * @return int 
  */
 int first(DynamicStack *dt){
-    return dt->first_node->value;
+    return dt->first_node != NULL ? dt->first_node->value : -321;
 }
 
 /**
@@ -97,6 +100,8 @@ int first(DynamicStack *dt){
  * @param inverted A boolean to show normal from top to first (false) or from first to top (true)
  */
 void show(DynamicStack *dt, bool inverted){
+    if(dt->first_node == NULL && dt->top_node == NULL) return;
+
     DoublyNode *node_reader = inverted ? dt->first_node : dt->top_node;
     
     while ((inverted ? node_reader->upper_next_node : node_reader->bottom_preview_node) != NULL){ //
@@ -104,6 +109,92 @@ void show(DynamicStack *dt, bool inverted){
         node_reader = inverted ? node_reader->upper_next_node : node_reader->bottom_preview_node;
     }
     printf("address: %p value: %d\n", node_reader, node_reader->value);
+}
+
+/**
+ * @brief Remove to top element of dynamic stack
+ * 
+ * @param dt A dynamic stack
+ * @return int
+ */
+int pop(DynamicStack *dt){
+    if (dt->top_node == NULL) return -321;
+
+    if (dt->top_node == dt->first_node) {
+        DoublyNode *current_top_node_address = dt->top_node;
+
+        dt->first_node = dt->top_node = NULL; 
+        int current_top_node_value = current_top_node_address->value;
+
+        free(current_top_node_address);
+        return current_top_node_value;
+    }
+
+    DoublyNode *current_top_node_address = dt->top_node;
+    int current_top_node_value = dt->top_node->value;
+    
+    dt->top_node = dt->top_node->bottom_preview_node;
+    dt->top_node->upper_next_node = NULL;
+
+    free(current_top_node_address);
+    return current_top_node_value;
+}
+
+/**
+ * @brief Destroy allocated memory of nodes
+ * 
+ * @param dt Dynamic stack
+ * @param intirely Validation to destroy intirely dynamic list
+ */
+void destroy(DynamicStack **dt, bool intirely){
+    if ((*dt)->top_node == NULL && intirely != true) return;
+
+    if ((*dt)->top_node == NULL && intirely == true){
+        free(*dt);
+        dt = NULL;
+        return;
+    } 
+
+    DoublyNode *node_reader = (*dt)->top_node;
+
+    while (node_reader->bottom_preview_node != NULL) {
+        DoublyNode *current_doubly_node = node_reader;
+        (*dt)->top_node = node_reader = node_reader->bottom_preview_node;
+
+        current_doubly_node->upper_next_node = NULL;
+        current_doubly_node->bottom_preview_node = NULL;
+        free(current_doubly_node);
+    }
+    
+    node_reader->upper_next_node = NULL;
+    node_reader->bottom_preview_node = NULL;
+    free(node_reader);
+
+    (*dt)->top_node = (*dt)->first_node = NULL;
+
+    if (intirely){
+        free(*dt);
+        dt = NULL;
+    }
+}
+
+/**
+ * @brief Get quantity of nodes inside Dynamic stack
+ * 
+ * @param st Dynamic stack
+ * @return int
+ */
+unsigned long quantity(DynamicStack *dt){
+    if (dt->top_node == NULL) return 0;
+
+    unsigned long quantity = 0;
+    DoublyNode *node_reader = dt->top_node;
+    while (node_reader->bottom_preview_node != NULL){
+        quantity++;
+        node_reader = node_reader->bottom_preview_node;
+    }
+
+    return ++quantity; //for the last node
 }
 
 #endif
