@@ -5,6 +5,10 @@
 
 int main(){
 
-    printf("Folder structure is working properly!");
+    DynamicStack *stack = create_dynamic_stack();
+
+    printf("%p\n", stack);
+    printf("%p\n", &stack);
+    
     return 0;
 }
