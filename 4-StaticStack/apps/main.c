@@ -43,5 +43,8 @@ int main(){
 
     printf("the index of top value is: %ld\n", current_top_index(stack));
 
+    destroy(&stack, false);
+    printf("current top index after destroy: %ld\n", current_top_index(stack));
+
     return EXIT_SUCCESS;
 }

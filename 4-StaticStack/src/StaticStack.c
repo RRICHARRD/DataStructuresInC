@@ -145,4 +145,22 @@ long current_top_index(StaticStack *st){
     return st->current_top_index;
 }
 
+/**
+ * @brief Desaloc memory of static stack
+ * 
+ * @param st A static stack
+ * @param intire boolean to destroy intire stack of the memory
+ */
+void destroy(StaticStack **st, bool intire){
+    free((*st)->stack);
+    (*st)->stack = NULL;
+    (*st)->size = 0;
+    (*st)->current_top_index = -1;
+
+    if (intire){
+        free(st);
+        st = NULL;
+    }
+}
+
 #endif

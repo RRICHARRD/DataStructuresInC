@@ -92,4 +92,12 @@ bool is_full(StaticStack *st);
  */
 long current_top_index(StaticStack *st);
 
+/**
+ * @brief Desaloc memory of static stack
+ * 
+ * @param st A static stack
+ * @param intire boolean to destroy intire stack of the memory
+ */
+void destroy(StaticStack **st, bool intire);
+
 #endif
