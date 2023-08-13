@@ -42,12 +42,18 @@ StaticQueue *create_static_queue(const unsigned long total_size){
  * 
  * @param sq A static queue
  * @param number A value to enqueue
+ * 
+ * @cite I saw somthing like (current_index + 1) % my_total_size to know the next position of last element, 
+ * that works but is more complex, I project that line to validade tha last index, is more easy to understand and simple
+ *  
  */
 void enqueue(StaticQueue *sq, int number){
     if (sq->current_size == sq->total_size){
         printf("EXCEPTION: QUEUE IS FULL | dequeue before enqueue another value\n");
         exit(EXIT_FAILURE);
     }
+
+    if (sq->last > sq->total_size-1) sq->last = 0;
 
     sq->queue[sq->last] = number;
     
@@ -93,12 +99,15 @@ int peek_last(StaticQueue *sq){
  */
 int dequeue(StaticQueue *sq){
     if (sq->current_size == 0){
-        printf("EXCEPTION: QUEUE IS EMPTY | enqueue before dequeue first value\n");
+        printf("EXCEPTION: QUEUE IS EMPTY | enqueue some value before dequeue some value\n");
         exit(EXIT_FAILURE);
     }
 
     int first_queue_element = sq->queue[sq->first];
+    
     sq->first++;
+    if (sq->first > sq->total_size-1) sq->first = 0;
+    
     sq->current_size--;
     return first_queue_element;
 }
@@ -114,9 +123,43 @@ void peek_all(StaticQueue *sq){
         exit(EXIT_FAILURE);
     }
 
-    for (int i=sq->first, count=0; count != sq->current_size; i++){
-        printf("%d\n", sq->queue[i]);
+    for (unsigned long i=sq->first, count=1; count <= sq->current_size; i++){
+        if (i > sq->total_size-1) i = 0;
+
+        printf("queue[%ld]: %d\n", i, sq->queue[i]);
         count++;
+    }
+}
+
+/**
+ * @brief Get the total size static queue
+ * 
+ * @param sq A static queue 
+ * @return unsigned long 
+ */
+unsigned long get_total_size(StaticQueue *sq){
+    return sq->total_size;
+}
+
+/**
+ * @brief Get the current fill size of static queue
+ * 
+ * @param sq A static queue
+ * @return unsigned long 
+ */
+unsigned long get_fill_size(StaticQueue *sq){
+    return sq->current_size;
+}
+
+/**
+ * @brief dequeue values one behind the other successively
+ * 
+ * @param sq Static queue
+ * @param how_much Quantity of values to dequeue from static queue
+ */
+void dequeue_frenetically(StaticQueue *sq, unsigned long how_much){
+    for(int i=1; i<=how_much; i++){
+        printf("dequeued: %d\n", dequeue(sq));
     }
 }
 

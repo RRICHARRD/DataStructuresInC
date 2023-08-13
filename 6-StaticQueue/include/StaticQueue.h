@@ -63,4 +63,28 @@ int dequeue(StaticQueue *sq);
  */
 void peek_all(StaticQueue *sq);
 
+/**
+ * @brief Get the total size static queue
+ * 
+ * @param sq A static queue 
+ * @return unsigned long 
+ */
+unsigned long get_total_size(StaticQueue *sq);
+
+/**
+ * @brief Get the current fill size of static queue
+ * 
+ * @param sq A static queue
+ * @return unsigned long 
+ */
+unsigned long get_fill_size(StaticQueue *sq);
+
+/**
+ * @brief dequeue values one behind the other
+ * 
+ * @param sq Static queue
+ * @param how_much Quantity of values to dequeue from static queue
+ */
+void dequeue_frenetically(StaticQueue *sq, unsigned long how_much);
+
 #endif

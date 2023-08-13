@@ -1,11 +1,13 @@
 
 #include <stdlib.h>
 
+
+#define SIZE 13
 #include <StaticQueue.h>
 
 int main(){
 
-    Queue *queue = (StaticQueue *) create_static_queue(13); 
+    Queue *queue = (StaticQueue *) create_static_queue(SIZE); 
 
     enqueue(queue, 1);
     enqueue(queue, 2);
@@ -20,16 +22,28 @@ int main(){
     enqueue(queue, 11);
     enqueue(queue, 12);
     enqueue(queue, 13);
-    //enqueue(queue, 14); generate an "exception" 
+    //enqueue(queue, 14); generate an "exception" correctly =)
 
+    dequeue_frenetically(queue, 5);
+
+    peek_all(queue);
+
+    enqueue(queue, 14);
+    enqueue(queue, 15);
+    enqueue(queue, 16);
+    enqueue(queue, 17);
+    enqueue(queue, 18); //full size filled
+
+    dequeue(queue);
+    enqueue(queue, 19); //working correct =)
 
     // printf("first value of queues: %d\n", peek_first(queue));
     // printf("last value of queue: %d\n", peek_last(queue));
 
-    int quantity_to_dequeue = 9;
-    for(int i=0; i<quantity_to_dequeue; i++){
-        printf("dequed value is: %d\n", dequeue(queue));
-    }
+    printf("--- get new values after dequeue and enqueue again ---\n");
+    peek_all(queue);
+
+    dequeue_frenetically(queue, SIZE);
 
     peek_all(queue);
 
