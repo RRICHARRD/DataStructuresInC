@@ -85,4 +85,39 @@ int peek_last(StaticQueue *sq){
     return sq->queue[sq->last-1]; //last always is one index in the front
 }
 
+/**
+ * @brief Remove the first element of queue 
+ * 
+ * @param sq A static stack
+ * @return int 
+ */
+int dequeue(StaticQueue *sq){
+    if (sq->current_size == 0){
+        printf("EXCEPTION: QUEUE IS EMPTY | enqueue before dequeue first value\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int first_queue_element = sq->queue[sq->first];
+    sq->first++;
+    sq->current_size--;
+    return first_queue_element;
+}
+
+/**
+ * @brief Print all values inside the queue
+ * 
+ * @param sq A static stack
+ */
+void peek_all(StaticQueue *sq){
+    if (sq->current_size == 0){
+        printf("EXCEPTION: QUEUE IS EMPTY | enqueue one value before show some value in the queue\n");
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i=sq->first, count=0; count != sq->current_size; i++){
+        printf("%d\n", sq->queue[i]);
+        count++;
+    }
+}
+
 #endif 

@@ -48,4 +48,19 @@ int peek_first(StaticQueue *sq);
  */
 int peek_last(StaticQueue *sq);
 
+/**
+ * @brief Remove the first element of queue 
+ * 
+ * @param sq A static stack
+ * @return int 
+ */
+int dequeue(StaticQueue *sq);
+
+/**
+ * @brief Print all values inside the queue
+ * 
+ * @param sq A static stack
+ */
+void peek_all(StaticQueue *sq);
+
 #endif
