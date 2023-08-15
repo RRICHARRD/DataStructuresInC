@@ -1,6 +1,7 @@
 #ifndef STATIC_QUEUE_IMPLEMENTATION
 #define STATIC_QUEUE_IMPLEMENTATION
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include <DynamicQueue.h>
@@ -81,6 +82,35 @@ void enqueue(DynamicQueue *dq, int value) {
     new_doubly_node->value = value;
     
     dq->size++;
+}
+
+/**
+ * @brief Get the size of queue
+ * 
+ * @param dq Dynamic Queue
+ */
+unsigned long int size(DynamicQueue *dq) {
+    return dq->size;
+}
+
+/**
+ * @brief Show values from the first to last
+ * 
+ * @param dq Dynamic queue
+ */
+void show(DynamicQueue *dq) {
+    if (dq->size == 0) {
+        printf("EXEPTION: QUEUE IS EMPTY | enqueue a new value before show any value from queue");
+        exit(EXIT_FAILURE);
+    }
+
+    DoublyNode *node_reader = dq->queue;
+
+    while (node_reader->next_node != NULL) {
+        printf("address: %p value: %ld\n", node_reader, node_reader->value);
+        node_reader = node_reader->next_node;
+    }
+    printf("address: %p value: %ld\n", node_reader, node_reader->value);
 }
 
 #endif

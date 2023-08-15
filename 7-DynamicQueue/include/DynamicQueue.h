@@ -47,4 +47,18 @@ DynamicQueue *create_new_dynamic_queue();
  */
 void enqueue(DynamicQueue *dq, int value);
 
+/**
+ * @brief Get the size of queue
+ * 
+ * @param dq Dynamic Queue
+ */
+unsigned long int size(DynamicQueue *dq);
+
+/**
+ * @brief Show values from the first to last
+ * 
+ * @param dq Dynamic queue
+ */
+void show(DynamicQueue *dq);
+
 #endif
