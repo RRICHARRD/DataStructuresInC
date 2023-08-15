@@ -2,6 +2,7 @@
 #define STATIC_QUEUE_SPECIFICATION
 
 #include <stdio.h> 
+#include <stdbool.h>
 
 /**
  * @brief A static queue structure
@@ -86,5 +87,13 @@ unsigned long get_fill_size(StaticQueue *sq);
  * @param how_much Quantity of values to dequeue from static queue
  */
 void dequeue_frenetically(StaticQueue *sq, unsigned long how_much);
+
+/**
+ * @brief Destroy data structure from memory
+ * 
+ * @param sq A static Queue
+ * @param intirely A boolean to validade full destroy of data strutucture from memory
+ */
+void destroy(StaticQueue **sq, bool intirely);
 
 #endif

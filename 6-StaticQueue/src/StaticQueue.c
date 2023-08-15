@@ -163,4 +163,24 @@ void dequeue_frenetically(StaticQueue *sq, unsigned long how_much){
     }
 }
 
+/**
+ * @brief Destroy data structure from memory
+ * 
+ * @param sq A static Queue
+ * @param intirely A boolean to validade full destroy of data strutucture from memory
+ */
+void destroy(StaticQueue **sq, bool intirely){
+    free((*sq)->queue);
+    (*sq)->queue = NULL;
+    (*sq)->last = 0;
+    (*sq)->first = 0;
+    (*sq)->total_size = 0;
+    (*sq)->current_size = 0;
+
+    if (intirely){
+        free((*sq));
+        (*sq) = NULL;
+    }
+}
+
 #endif 

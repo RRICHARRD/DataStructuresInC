@@ -1,7 +1,6 @@
 
 #include <stdlib.h>
 
-
 #define SIZE 13
 #include <StaticQueue.h>
 
@@ -43,7 +42,11 @@ int main(){
     printf("--- get new values after dequeue and enqueue again ---\n");
     peek_all(queue);
 
-    dequeue_frenetically(queue, SIZE);
+    dequeue_frenetically(queue, SIZE-1);
+
+    //peek_all(queue);
+
+    destroy(&queue, false); //false generate segmentation fault correctly =)
 
     peek_all(queue);
 
