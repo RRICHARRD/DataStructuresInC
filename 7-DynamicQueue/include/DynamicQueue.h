@@ -1,0 +1,7 @@
+#ifndef STATIC_QUEUE_SPECIFICATION
+#define STATIC_QUEUE_SPECIFICATION
+
+
+
+
+#endif
