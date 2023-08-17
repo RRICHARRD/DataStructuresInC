@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -30,7 +29,11 @@ int main() {
 
     dequeue_frenetically(queue, 1);
 
-    destroy(&queue);
+    destroy(&queue, true);
+
+    //show(queue);
+
+    printf("The first value is: %d\n",  peek(queue));
 
     return EXIT_SUCCESS;
 }

@@ -152,9 +152,9 @@ void dequeue_frenetically(DynamicQueue *dq, unsigned long int quantity) {
  * 
  * @param dq Dynamic queue
  */
-void destroy(DynamicQueue **dq) {
-    if (dq == NULL) {
-        printf("EXCEPTION: NULL POINTER REFERENCE | There are no dynamic queue reference in variable");
+void destroy(DynamicQueue **dq, bool intirely) {
+    if ((*dq) == NULL) {
+        printf("EXCEPTION: NULL POINTER REFERENCE | There are no dynamic queue reference in variable\n");
         exit(EXIT_FAILURE);
     }
 
@@ -170,6 +170,31 @@ void destroy(DynamicQueue **dq) {
 
     (*dq)->size = 0;
     (*dq)->last_node = NULL;
+
+    if (intirely) {
+        free((*dq));
+        (*dq) = NULL;
+    }
+}
+
+/**
+ * @brief Show the first value in the queue
+ * 
+ * @param dq Dynamic queue
+ * @return int 
+ */
+int peek(DynamicQueue *dq) {
+    if (dq == NULL) {
+        printf("EXCEPTION: NULL POINTER REFERENCE | the queue reference is null\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (dq->size == 0) {
+        printf("EXCEPTION: QUEUE IS EMPTY | enqueue one value before peek the first value\n");
+        exit(EXIT_FAILURE);
+    }
+    
+    return dq->queue->value;
 }
 
 #endif

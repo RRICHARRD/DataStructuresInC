@@ -1,6 +1,8 @@
 #ifndef STATIC_QUEUE_SPECIFICATION
 #define STATIC_QUEUE_SPECIFICATION
 
+#include <stdbool.h>
+
 /**
  * @brief A doubly node struture
  * 
@@ -82,6 +84,14 @@ void dequeue_frenetically(DynamicQueue *sq, unsigned long int quantity);
  * 
  * @param dq Dynamic queue
  */
-void destroy(DynamicQueue **dq);
+void destroy(DynamicQueue **dq, bool intirely);
+
+/**
+ * @brief Show the first value in the queue
+ * 
+ * @param dq Dynamic queue
+ * @return int 
+ */
+int peek(DynamicQueue *dq);
 
 #endif
