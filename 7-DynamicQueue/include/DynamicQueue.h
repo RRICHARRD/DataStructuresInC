@@ -61,4 +61,12 @@ unsigned long int size(DynamicQueue *dq);
  */
 void show(DynamicQueue *dq);
 
+/**
+ * @brief Remove the first element of queue
+ * 
+ * @param dq Dynamics queue
+ * @return int
+ */
+int dequeue(DynamicQueue *dq);
+
 #endif

@@ -26,5 +26,7 @@ int main() {
 
     show(queue);
 
+    printf("dequeued: %d\n", dequeue(queue));
+
     return EXIT_SUCCESS;
 }

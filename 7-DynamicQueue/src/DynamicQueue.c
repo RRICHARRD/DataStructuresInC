@@ -113,4 +113,24 @@ void show(DynamicQueue *dq) {
     printf("address: %p value: %ld\n", node_reader, node_reader->value);
 }
 
+/**
+ * @brief Remove the first element of queue
+ * 
+ * @param dq Dynamics queue
+ * @return int
+ */
+int dequeue(DynamicQueue *dq) {
+    if (dq->size == 0) {
+        printf("EXECEPTION: QUEUE IS EMPTY | Enqueue one value before dequeue");
+        exit(EXIT_FAILURE);
+    }
+
+    DoublyNode *first_node = dq->queue;
+    dq->queue = dq->queue->next_node;
+    int value = first_node->value; 
+    free(first_node);
+
+    return value;
+}
+
 #endif
