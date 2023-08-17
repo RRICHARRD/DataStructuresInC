@@ -69,4 +69,12 @@ void show(DynamicQueue *dq);
  */
 int dequeue(DynamicQueue *dq);
 
+/**
+ * @brief Eliminate one or more values from dynamic queue frenetically
+ * 
+ * @param sq Dynamic queue 
+ * @param quantity Quantity of elements to dequeue
+ */
+void dequeue_frenetically(DynamicQueue *sq, unsigned long int quantity);
+
 #endif

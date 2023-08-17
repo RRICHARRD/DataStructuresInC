@@ -121,7 +121,7 @@ void show(DynamicQueue *dq) {
  */
 int dequeue(DynamicQueue *dq) {
     if (dq->size == 0) {
-        printf("EXECEPTION: QUEUE IS EMPTY | Enqueue one value before dequeue");
+        printf("EXECEPTION: QUEUE IS EMPTY | Enqueue one value before dequeue\n");
         exit(EXIT_FAILURE);
     }
 
@@ -129,8 +129,22 @@ int dequeue(DynamicQueue *dq) {
     dq->queue = dq->queue->next_node;
     int value = first_node->value; 
     free(first_node);
-
+    
+    dq->size--;
+    
     return value;
+}
+
+/**
+ * @brief Eliminate one or more values from dynamic queue frenetically
+ * 
+ * @param sq Dynamic queue 
+ * @param quantity Quantity of elements to dequeue
+ */
+void dequeue_frenetically(DynamicQueue *sq, unsigned long int quantity) {
+    for (unsigned long int i = 1; i <= quantity; i++) {
+        printf("dequeued %d\n", dequeue(sq));
+    }
 }
 
 #endif

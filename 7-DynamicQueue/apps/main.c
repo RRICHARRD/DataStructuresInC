@@ -28,5 +28,7 @@ int main() {
 
     printf("dequeued: %d\n", dequeue(queue));
 
+    dequeue_frenetically(queue, 40);
+
     return EXIT_SUCCESS;
 }
