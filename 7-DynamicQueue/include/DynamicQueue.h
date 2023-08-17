@@ -77,4 +77,11 @@ int dequeue(DynamicQueue *dq);
  */
 void dequeue_frenetically(DynamicQueue *sq, unsigned long int quantity);
 
+/**
+ * @brief Destroy queue elements
+ * 
+ * @param dq Dynamic queue
+ */
+void destroy(DynamicQueue **dq);
+
 #endif

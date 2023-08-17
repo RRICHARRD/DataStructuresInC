@@ -127,6 +127,7 @@ int dequeue(DynamicQueue *dq) {
 
     DoublyNode *first_node = dq->queue;
     dq->queue = dq->queue->next_node;
+    first_node->preview_node = NULL;
     int value = first_node->value; 
     free(first_node);
     
@@ -138,13 +139,37 @@ int dequeue(DynamicQueue *dq) {
 /**
  * @brief Eliminate one or more values from dynamic queue frenetically
  * 
- * @param sq Dynamic queue 
+ * @param dq Dynamic queue 
  * @param quantity Quantity of elements to dequeue
  */
-void dequeue_frenetically(DynamicQueue *sq, unsigned long int quantity) {
-    for (unsigned long int i = 1; i <= quantity; i++) {
-        printf("dequeued %d\n", dequeue(sq));
+void dequeue_frenetically(DynamicQueue *dq, unsigned long int quantity) {
+    for (unsigned long int i = 1; i <= quantity; i++) 
+        printf("(f) dequeued: %d\n", dequeue(dq));
+}
+
+/**
+ * @brief Destroy queue elements
+ * 
+ * @param dq Dynamic queue
+ */
+void destroy(DynamicQueue **dq) {
+    if (dq == NULL) {
+        printf("EXCEPTION: NULL POINTER REFERENCE | There are no dynamic queue reference in variable");
+        exit(EXIT_FAILURE);
     }
+
+    // Different way to not use free out of while like costume =)
+    while ((*dq)->queue != NULL) {
+        DoublyNode *current_node = (*dq)->queue;
+        (*dq)->queue = (*dq)->queue->next_node;
+        if ((*dq)->queue != NULL) (*dq)->queue->preview_node = NULL;
+        
+        current_node->next_node = NULL;
+        free(current_node);
+    }
+
+    (*dq)->size = 0;
+    (*dq)->last_node = NULL;
 }
 
 #endif

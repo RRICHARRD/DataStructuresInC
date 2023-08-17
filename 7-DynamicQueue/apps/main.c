@@ -28,7 +28,9 @@ int main() {
 
     printf("dequeued: %d\n", dequeue(queue));
 
-    dequeue_frenetically(queue, 40);
+    dequeue_frenetically(queue, 1);
+
+    destroy(&queue);
 
     return EXIT_SUCCESS;
 }
