@@ -1,6 +1,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h> 
 
 #include <Tree.h>
 
@@ -17,7 +18,7 @@
 
 int main() {
 
-    puts("Program is working!!!");
-
+    TreeNode *node = NULL;
+    
     return 0;
 }
