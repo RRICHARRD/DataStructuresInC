@@ -1,7 +1,6 @@
 
 
 #include <stdio.h>
-#include <stdlib.h> 
 
 #include <Tree.h>
 
@@ -18,7 +17,9 @@
 
 int main() {
 
-    TreeNode *node = NULL;
-    
+    TreeNode *node = (TreeNode *) create_tree_node(1);
+
+    printf("node value is: %d\n", get_node_value(node));
+
     return 0;
 }
