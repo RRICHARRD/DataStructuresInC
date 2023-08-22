@@ -1,20 +1,54 @@
+//#include <BinaryTree.h>
 
 #include <stdio.h>
+#include <stdlib.h>
 
-#include <BinaryTree.h>
+typedef struct treeNode {
+    char letter;
+    struct treeNode *left;
+    struct treeNode *right;
+} TreeNode;
 
-/*
-    A binary tree is a tree in which every node has at most two children. Can ONE but not more then TWO
+typedef struct tree {
+    TreeNode *root;
+} Tree;
 
-    types of binary`s trees
+TreeNode *create_new_node(char letter) {
+    TreeNode *new_tree_node = (TreeNode *) calloc(1, sizeof(TreeNode));
+    new_tree_node->letter = letter;
+    return new_tree_node;
+}
 
-        Full Binary Tree → A binary tree in which every node has 2 children except the leaves is known as a full binary tree.
-*/
+void show_node_value(TreeNode *tn) {
+    printf("%c\n", tn->letter);
+}
+
+void insert(TreeNode *td, char *position, char letter) {
+    TreeNode *new_node = (TreeNode *) calloc(1, sizeof(TreeNode));
+    new_node->letter = letter;
+    
+    if (position == "left") {
+        td->left = new_node;
+    } else if(position == "right") {
+        td->right = new_node;
+    } else {
+        printf("EXCEPTION: Strange insert positon | use 'right' or 'left'");
+        exit("EXIT_FAILURE");
+    }
+}
 
 int main() {
-    TreeNode *node = (TreeNode *) create_tree_node(1);
+    Tree *tree = (Tree *) calloc(1, sizeof(Tree));
+    printf("root: %p\n", tree->root);
+    
+    tree->root = create_new_node('r');
+    printf("root: %p\n", tree->root);
+    
+    show_node_value(tree->root);
+    
+    insert(tree->root, "left", 'i');
 
-    printf("node value is: %d\n", get_node_value(node));
+    printf("root->left: %c\n", tree->root->left->letter);
 
-    return 0;
+    return 'EXIT_SUCCESS';
 }
