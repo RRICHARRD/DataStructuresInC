@@ -24,17 +24,16 @@ void show_node_value(TreeNode *tn) {
 }
 
 void insert(TreeNode *td, char *position, char letter) {
-    TreeNode *new_node = (TreeNode *) calloc(1, sizeof(TreeNode));
-    new_node->letter = letter;
-    
-    if (position == "left") {
-        td->left = new_node;
-    } else if(position == "right") {
-        td->right = new_node;
-    } else {
+    if (position != "left" && position != "right") {
         printf("EXCEPTION: Strange insert positon | use 'right' or 'left'");
         exit(EXIT_FAILURE);
     }
+    
+    TreeNode *new_node = (TreeNode *) calloc(1, sizeof(TreeNode));
+    new_node->letter = letter;
+
+    TreeNode **node_position = (position == "left") ? &td->left : &td->right;
+    *node_position = new_node;
 }
 
 int main() {
@@ -49,6 +48,9 @@ int main() {
     insert(tree->root, "left", 'i');
 
     printf("root->left: %c\n", tree->root->left->letter);
+    insert(tree->root->left, "right", 'c');
+
+    printf("root->left: %c\n", tree->root->left->right->letter);
 
     return EXIT_SUCCESS;
 }
