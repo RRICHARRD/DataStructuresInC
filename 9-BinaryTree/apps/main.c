@@ -33,7 +33,7 @@ void insert(TreeNode *td, char *position, char letter) {
         td->right = new_node;
     } else {
         printf("EXCEPTION: Strange insert positon | use 'right' or 'left'");
-        exit("EXIT_FAILURE");
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -50,5 +50,5 @@ int main() {
 
     printf("root->left: %c\n", tree->root->left->letter);
 
-    return 'EXIT_SUCCESS';
+    return EXIT_SUCCESS;
 }
