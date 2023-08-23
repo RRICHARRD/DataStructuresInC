@@ -72,6 +72,8 @@ void insert(TreeNode *td, char *position, char letter) {
     printf("position c %c\n", position); 
     printf("position c %s\n", position);  
 
+    printf("position  == left %d\n", position == "left");
+
     if (position != "left" && position != "right") {
         printf("EXCEPTION: Strange insert positon | use 'right' or 'left'\n");
         exit(EXIT_FAILURE);
