@@ -15,11 +15,44 @@
 */
 
 
+/*
+    Buid that tree below and tranversal after:
+
+                    D
+                  /  \
+                 C    R
+                / \    \
+               R  I     A
+                       /
+                      H
+*/ 
+
 int main() {
 
-    TreeNode *node = (TreeNode *) create_tree_node(1);
+    TreeNode *R = (TreeNode *) create_tree_node("R");
+    TreeNode *I = (TreeNode *) create_tree_node("I");
+    TreeNode *C = (TreeNode *) create_tree_node("C");
+    TreeNode *H = (TreeNode *) create_tree_node("H");
+    TreeNode *A = (TreeNode *) create_tree_node("A");
+    TreeNode *R2 = (TreeNode *) create_tree_node("R");
+    TreeNode *D = (TreeNode *) create_tree_node("D");
 
-    printf("node value is: %d\n", get_node_value(node));
+    D->left = C;
+    C->parent = D;
+    
+    C->left = R;
+    R->parent = C;
+    C->right = I;
+    I->parent = C;
+
+    D->right = R2;
+    R2->parent = D;
+
+    R2->right = A;
+    A->parent = R2;
+
+    A->left = H;
+    H->parent = A;
 
     return 0;
 }

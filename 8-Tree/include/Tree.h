@@ -1,5 +1,5 @@
-#ifndef STATIC_QUEUE_SPECIFICATION
-#define STATIC_QUEUE_SPECIFICATION
+#ifndef BINARYTREE_SPECIFICATION
+#define BINARYTREE_SPECIFICATION
 
 #include <stdlib.h>
 
@@ -9,20 +9,25 @@
  * 
  * @attention Use TreeNode to referes a struct treeNode
  * 
- * @param data {int} An information to store inside the tree
+ * @param leter {char} A letter to store inside the node
  * @param parent {TreeNode *} Address of parent
  * @param left {TreeNode *} Address of left TreeNode
  * @param right {TreeNode *} Address of right TreeNode
  */
-typedef struct treeNode TreeNode;
+typedef struct treeNode {
+    char *letter;
+    struct treeNode *parent;
+    struct treeNode *left;
+    struct treeNode *right;
+} TreeNode;
 
 /**
  * @brief Create a tree node with parent, left and right address defined to NULL
  * 
- * @param value A number to store inside the node
+ * @param letter A letter to store inside the node
  * @return TreeNode* 
  */
-TreeNode *create_tree_node(int value);
+TreeNode *create_tree_node(char *letter);
 
 /**
  * @brief Get inside value of node
@@ -30,6 +35,6 @@ TreeNode *create_tree_node(int value);
  * @param node Address of the node I need to get the value
  * @return int 
  */
-int get_node_value(TreeNode *node);
+char *get_node_value(TreeNode *node);
 
 #endif
