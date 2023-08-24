@@ -1,6 +1,8 @@
 #ifndef BINARYTREE_IMPLEMENTATION
 #define BINARYTREE_IMPLEMENTATION
 
+#include <string.h> // strcmp -> 0 indicate lexicographic equivalence
+
 #include <BinaryTree.h>
 
 /**
@@ -24,7 +26,6 @@ typedef struct treeNode {
  * @attention Utilize Tree to refers to struct tree
  * 
  * @param root {TreeNode *} Root node of the tree
- * 
  */
 typedef struct tree {
     TreeNode *root;
@@ -56,8 +57,14 @@ Tree *create_new_tree() {
  * 
  * @param tn Node address where exists the letter to be viewed
  */
-void show_node_value(TreeNode *tn) {
-    printf("%c\n", tn->letter);
+void show_node_value(TreeNode *tn, char *position) {
+    if (strcmp(position, "left") != 0 && strcmp(position, "right") != 0 && strcmp(position, "current") != 0) {
+        printf("EXCEPTION: POSITION ERROR | The node only have left, right and current posibilities to see the values");
+        exit(EXIT_FAILURE);
+    }
+
+    TreeNode **node_position = (strcmp(position, "left") == 0) ? &tn->left : (strcmp(position, "right") == 0) ? &tn->right : &tn;
+    printf("%c\n", (*node_position)->letter);
 }
 
 /**
@@ -67,14 +74,8 @@ void show_node_value(TreeNode *tn) {
  * @param position Position of connection, need to be 'left' or 'right' 
  * @param letter A letter to store inside the new node
  */
-void insert(TreeNode *td, char *position, char letter) {
-
-    printf("position c %c\n", position); 
-    printf("position c %s\n", position);  
-
-    printf("position  == left %d\n", position == "left");
-
-    if (position != "left" && position != "right") {
+void insert(TreeNode *tn, char *position, char letter) {
+    if (strcmp(position, "left") != 0 && strcmp(position, "right") != 0) { // == validate memory address, reason to use strcmp =)
         printf("EXCEPTION: Strange insert positon | use 'right' or 'left'\n");
         exit(EXIT_FAILURE);
     }
@@ -82,7 +83,7 @@ void insert(TreeNode *td, char *position, char letter) {
     TreeNode *new_node = (TreeNode *) calloc(1, sizeof(TreeNode));
     new_node->letter = letter;
 
-    TreeNode **node_position = (position == "left") ? &td->left : &td->right;
+    TreeNode **node_position = (strcmp(position, "left") == 0) ? &tn->left : &tn->right;
     *node_position = new_node;
 }
 

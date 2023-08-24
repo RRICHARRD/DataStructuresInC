@@ -14,11 +14,11 @@ int main() {
     
     printf("root: %p\n", get_root_node(tree));
     
-    show_node_value(get_root_node(tree));
+    show_node_value(get_root_node(tree), "current");
     
     insert(get_root_node(tree), "left", 'i');
 
-    //printf("root->left: %c\n", tree->root->left->letter);
+    show_node_value(get_root_node(tree), "left");
     //insert(tree->root->left, "right", 'c');
 
     //printf("root->left: %c\n", tree->root->left->right->letter);

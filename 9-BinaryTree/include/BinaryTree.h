@@ -45,7 +45,7 @@ Tree *create_new_tree();
  * 
  * @param tn Node address where exists the letter to be viewed
  */
-void show_node_value(TreeNode *tn);
+void show_node_value(TreeNode *tn, char *position);
 
 /**
  * @brief Insert new node in specified position
