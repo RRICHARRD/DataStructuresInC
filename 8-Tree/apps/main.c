@@ -27,6 +27,10 @@
                       H
 */ 
 
+void traversal() {
+
+}
+
 int main() {
 
     TreeNode *R = (TreeNode *) create_tree_node("R");
