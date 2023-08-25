@@ -27,17 +27,12 @@
                       H
 */ 
 
-void traversal(TreeNode *root) {
-    printf("%s", root->letter);
-    
-    if (root->left != NULL) {
-        return traversal(root->left);
-    } else if (root->right != NULL) {
-        return traversal(root->right);
-    } else if (root->right == NULL) {
-        return traversal(root->parent->parent->right);
-    }
+typedef struct tree {
+    struct tree *root;
+} Tree;
 
+void traversal(Tree *tree) {
+    
 }
 
 int main() {
@@ -67,8 +62,10 @@ int main() {
     A->left = H;
     H->parent = A;
 
+    Tree *my_tree = (Tree *) calloc(1, sizeof(Tree));
+    my_tree->root = D;
 
-    traversal(D);
+    traversal(my_tree);
 
     return 0;
 }
