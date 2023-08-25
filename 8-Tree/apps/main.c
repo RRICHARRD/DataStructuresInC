@@ -27,7 +27,16 @@
                       H
 */ 
 
-void traversal() {
+void traversal(TreeNode *root) {
+    printf("%s", root->letter);
+    
+    if (root->left != NULL) {
+        return traversal(root->left);
+    } else if (root->right != NULL) {
+        return traversal(root->right);
+    } else if (root->right == NULL) {
+        return traversal(root->parent->parent->right);
+    }
 
 }
 
@@ -57,6 +66,9 @@ int main() {
 
     A->left = H;
     H->parent = A;
+
+
+    traversal(D);
 
     return 0;
 }
